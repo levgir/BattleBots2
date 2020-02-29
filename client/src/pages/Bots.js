@@ -7,29 +7,29 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
-function Books() {
+function Bots() {
   // Setting our component's initial state
-  const [books, setBooks] = useState([])
+  const [bots, setBots] = useState([])
   const [formObject, setFormObject] = useState({})
 
   // Load all books and store them with setBooks
   useEffect(() => {
-    loadBooks()
+    loadBots()
   }, [])
 
   // Loads all books and sets them to books
-  function loadBooks() {
-    API.getBooks()
+  function loadBots() {
+    API.getBots()
       .then(res => 
-        setBooks(res.data)
+        setBots(res.data)
       )
       .catch(err => console.log(err));
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
+  function deleteBot(id) {
+    API.deleteBot(id)
+      .then(res => loadBots())
       .catch(err => console.log(err));
   }
 
@@ -43,13 +43,15 @@ function Books() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.title && formObject.author) {
-      API.saveBook({
-        title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
+    if (formObject.name && formObject.owner) {
+      API.saveBot({
+        name: formObject.name,
+        owner: formObject.owner,
+        history: formObject.history,
+        wins: formObject.wins,
+        losses: formObject.losses
       })
-        .then(res => loadBooks())
+        .then(res => loadBots())
         .catch(err => console.log(err));
     }
   };
@@ -59,46 +61,56 @@ function Books() {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>Register a new bot.</h1>
             </Jumbotron>
             <form>
               <Input
                 onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
+                name="name"
+                placeholder="Name (required)"
               />
               <Input
                 onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="owner"
+                placeholder="Owner (required)"
               />
               <TextArea
                 onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="history"
+                placeholder="Bot's History (Optional)"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="wins"
+                placeholder="Wins (required)"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="losses"
+                placeholder="Losses (required)"
               />
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+                disabled={!(formObject.owner && formObject.name)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Register BattleBot
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>Registered BattleBots</h1>
             </Jumbotron>
-            {books.length ? (
+            {bots.length ? (
               <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {bots.map(bot => (
+                  <ListItem key={bot._id}>
+                    <Link to={"/bots/" + bot._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {bot.name} by {bot.owner}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => deleteBot(bot._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -112,4 +124,4 @@ function Books() {
   }
 
 
-export default Books;
+export default Bots;
