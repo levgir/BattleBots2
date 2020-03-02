@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import Select from "react-select"
+import Select from "react-select";
 
 
 function NewMatch() {
   // Setting our component's initial state
   const [bots, setBots] = useState([])
+  const [bot1, setBot1] = useState({})
+  const [bot2, setBot2] = useState({})
 
   let battleBots = []
 
@@ -26,9 +27,24 @@ function NewMatch() {
       .catch(err => console.log(err));
   };
 
+  // function getBot1(botID) {
+  //   API.getBott(this.value)
+  //     .then(res => 
+  //       setBot1(res.data)
+  //     )
+  //     .catch(err => console.log(err));
+  // };
+
   function mapBots() {
-    battleBots = bots.map(bot => ({ value: bot.id, label: bot.name }))
-    console.log("I ran")
+    battleBots = bots.map(bot => ({ 
+      label: bot.name,
+      value: bot._id,
+      history: bot.history,
+      wins: bot.wins,
+      losses: bot.losses,
+      owner: bot.owner 
+    }))
+    console.log(bots)
   }
 
   return (
@@ -39,6 +55,9 @@ function NewMatch() {
             mapBots(),
             <Select
               options={battleBots}
+              isSearchable
+              isClearable
+              onChange={setBot1}
             />
           ) : (
               <Select
@@ -51,6 +70,9 @@ function NewMatch() {
             mapBots(),
             <Select
               options={battleBots}
+              isSearchable
+              isClearable
+              onChange={setBot2}
             />
           ) : (
               <Select
@@ -63,38 +85,20 @@ function NewMatch() {
         <Col size="md-6 sm-12">
           <Jumbotron>
             <h1>Choose Your Bot</h1>
+            <p><strong>BattleBot: {bot1.label}</strong></p>
+            <p><strong>Owner: {bot1.owner}</strong></p>
+            <p><strong>{bot1.wins} - {bot1.losses}</strong></p>
+            <p>{bot1.history}</p>
           </Jumbotron>
-          {bots.length ? (
-            <List>
-              {bots.map(bot => (
-                <ListItem key={bot._id} >
-                  <strong>
-                    {bot.name} by {bot.owner}
-                  </strong>
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
-            <h1>Choose Your Enemy</h1>
+            <h1>Choose Your Bot</h1>
+            <p><strong>BattleBot: {bot2.label}</strong></p>
+            <p><strong>Owner: {bot2.owner}</strong></p>
+            <p><strong>{bot2.wins} - {bot2.losses}</strong></p>
+            <p>{bot2.history}</p>
           </Jumbotron>
-          {bots.length ? (
-            <List>
-              {bots.map(bot => (
-                <ListItem key={bot._id}>
-                  <strong>
-                    {bot.name} by {bot.owner}
-                  </strong>
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
         </Col>
       </Row>
     </Container>
