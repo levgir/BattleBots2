@@ -5,6 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 function Detail(props) {
+  console.log(props)
   const [bot, setBot] = useState({})
 
   // When this component mounts, grab the book with the _id of props.match.params.id
@@ -21,7 +22,7 @@ function Detail(props) {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {bot.name} by {bot.owner}
+                {bot.name}
               </h1>
             </Jumbotron>
           </Col>
@@ -29,7 +30,10 @@ function Detail(props) {
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>History</h1>
+              <h1>{bot.name} was created by {bot.owner}</h1>
+              <p>
+                {bot.name}'s record in the arena is {bot.wins}-{bot.losses}.
+              </p>
               <p>
                 {bot.history}
               </p>

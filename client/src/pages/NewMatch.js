@@ -3,6 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 
 function NewMatch() {
@@ -27,14 +28,6 @@ function NewMatch() {
       .catch(err => console.log(err));
   };
 
-  // function getBot1(botID) {
-  //   API.getBott(this.value)
-  //     .then(res => 
-  //       setBot1(res.data)
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
   function mapBots() {
     battleBots = bots.map(bot => ({ 
       label: bot.name,
@@ -44,7 +37,6 @@ function NewMatch() {
       losses: bot.losses,
       owner: bot.owner 
     }))
-    console.log(bots)
   }
 
   return (
@@ -100,6 +92,9 @@ function NewMatch() {
             <p>{bot2.history}</p>
           </Jumbotron>
         </Col>
+      </Row>
+      <Row>
+      <Link to={{pathname:"/fight", bot1:bot1, bot2:bot2}}><strong>Fight!</strong></Link>
       </Row>
     </Container>
   );
