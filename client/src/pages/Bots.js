@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import DeleteBtn from "../components/DeleteBtn";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Bots() {
@@ -26,23 +26,12 @@ function Bots() {
       .catch(err => console.log(err));
   };
 
-  // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBot(id) {
-    API.deleteBot(id)
-      .then(res => loadBots())
-      .catch(err => console.log(err));
-  }
-
-  // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
   };
 
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
+  function handleFormSubmit() {
     if (formObject.name && formObject.owner) {
       API.saveBot({
         name: formObject.name,
@@ -51,15 +40,20 @@ function Bots() {
         wins: formObject.wins,
         losses: formObject.losses
       })
-        .then(res => loadBots())
         .catch(err => console.log(err));
     }
   };
 
+  function deleteBot(id) {
+    API.deleteBot(id)
+      .then(res => loadBots())
+      .catch(err => console.log(err));
+  }
+
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+        <Col size="md-6">
             <Jumbotron>
               <h1>Register a new bot.</h1>
             </Jumbotron>
@@ -107,7 +101,7 @@ function Bots() {
                   <ListItem key={bot._id}>
                     <Link to={"/bots/" + bot._id}>
                       <strong>
-                        {bot.name} by {bot.owner}
+                        {bot.name}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => deleteBot(bot._id)} />
@@ -122,6 +116,5 @@ function Bots() {
       </Container>
     );
   }
-
 
 export default Bots;

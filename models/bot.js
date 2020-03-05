@@ -6,7 +6,7 @@ const botSchema = new Schema({
   owner: { type: String, required: true },
   history: String,
   wins: { type: Number, required: true },
-  losses: { type: Number, required: true }
+  losses: { type: Number, required: true },
 });
 
 const Bot = mongoose.model("Bot", botSchema);
