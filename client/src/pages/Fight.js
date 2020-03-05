@@ -1,9 +1,40 @@
 import React from "react";
+import Jumbotron from "../components/Jumbotron";
+import { Col, Row, Container } from "../components/Grid";
 
 function Fight(props) {
     console.log(props.bot1, props.bot2)
     return (
-        <h1>Fight!!!</h1>
+        
+        <Container>
+            <Row>
+                <Col size="md-6">
+                    <h1>Fight!!!</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col size="md-6">
+                    <button>↑</button>
+                </Col>
+            </Row>
+            <Row>
+                <Col size="md-6">
+                    <button>←</button>
+                    <button>→</button>
+                </Col>
+            </Row>
+            <Row>
+                <Col size="md-6">
+                    <button>↓</button>
+                </Col>
+            </Row>
+            <Row>
+                <Col size="md-6">
+                    <button>Attack</button>
+                </Col>      
+            </Row>
+        </Container>
+        
     )
         
 }
