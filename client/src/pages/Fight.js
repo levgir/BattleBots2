@@ -33,6 +33,11 @@ function Fight(props) {
                     <button>Attack</button>
                 </Col>      
             </Row>
+            <Row>
+                <Col size="md-6">
+                    <button>Connect</button>
+                </Col>      
+            </Row>
         </Container>
         
     )

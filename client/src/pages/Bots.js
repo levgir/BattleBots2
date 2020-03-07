@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
+import Jumbotron2 from "../components/Jumbotron2";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -53,9 +54,16 @@ function Bots() {
     return (
       <Container fluid>
         <Row>
+          <Col size='sm-12'>
+            <Jumbotron2>
+              <h1>Welcome to the Fight!</h1>
+            </Jumbotron2>
+          </Col>
+        </Row>
+        <Row>
         <Col size="md-6">
             <Jumbotron>
-              <h1>Register a new bot.</h1>
+              <h1>Register a new BattleBot.</h1>
             </Jumbotron>
             <form>
               <Input
