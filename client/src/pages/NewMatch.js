@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Jumbotron from "../components/Jumbotron";
 import Jumbotron3 from "../components/Jumbotron3";
 import API from "../utils/API";
 import { Col, Col2, Row, Row2, Container } from "../components/Grid";
 import Select from "react-select";
-import { Link } from "react-router-dom";
-import BlackDiamond from "../utils/photos/Black Diamond.jpg" 
+import BlackDiamond from "../utils/photos/Black Diamond.jpg"
+import Crusher from "../utils/photos/Crusher.png"
 
 
 function NewMatch() {
@@ -30,13 +31,13 @@ function NewMatch() {
   };
 
   function mapBots() {
-    battleBots = bots.map(bot => ({ 
+    battleBots = bots.map(bot => ({
       label: bot.name,
       value: bot._id,
       history: bot.history,
       wins: bot.wins,
       losses: bot.losses,
-      owner: bot.owner 
+      owner: bot.owner
     }))
   }
 
@@ -77,7 +78,7 @@ function NewMatch() {
       <Row2>
         <Col size="md-5 sm-12">
           <Jumbotron3>
-            <img src= {BlackDiamond} alt={bot1.label} height="150px" width="150px" style={{float:"left"}}></img>
+            <img id="pic1" src={BlackDiamond} alt={bot1.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot1.label}</strong></p>
             <p><strong>Owner: {bot1.owner}</strong></p>
             <p><strong>{bot1.wins} - {bot1.losses}</strong></p>
@@ -89,7 +90,7 @@ function NewMatch() {
         </Col2>
         <Col size="md-5 sm-12">
           <Jumbotron3>
-            <img src= {BlackDiamond} alt={bot2.label} height="150px" width="150px" style={{float:"left"}}></img>
+            <img id="pic1" src={Crusher} alt={bot2.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot2.label}</strong></p>
             <p><strong>Owner: {bot2.owner}</strong></p>
             <p><strong>{bot2.wins} - {bot2.losses}</strong></p>
@@ -97,9 +98,15 @@ function NewMatch() {
           </Jumbotron3>
         </Col>
       </Row2>
-      <Row>
-      <Link to={{pathname:"/fight", bot1:bot1, bot2:bot2}}><strong>Fight!</strong></Link>
-      </Row>
+      <Row2>
+        <Col2 size="md-2 sm-2">
+          <a href="/fight">
+            <Jumbotron>
+              <h1>Fight!!!</h1>
+            </Jumbotron>
+          </a>
+        </Col2>
+      </Row2>
     </Container>
   );
 }
