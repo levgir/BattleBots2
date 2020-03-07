@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Jumbotron from "../components/Jumbotron";
 import Jumbotron2 from "../components/Jumbotron2";
-import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 
 function Bots() {
