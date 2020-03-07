@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Jumbotron from "../components/Jumbotron";
+import Jumbotron3 from "../components/Jumbotron3";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Col2, Row, Row2, Container } from "../components/Grid";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import BlackDiamond from "../utils/photos/Black Diamond.jpg" 
 
 
 function NewMatch() {
@@ -46,9 +47,9 @@ function NewMatch() {
           {bots.length ? (
             mapBots(),
             <Select
+              placeholder="Select your BattleBot"
               options={battleBots}
               isSearchable
-              isClearable
               onChange={setBot1}
             />
           ) : (
@@ -61,9 +62,9 @@ function NewMatch() {
           {bots.length ? (
             mapBots(),
             <Select
+              placeholder="Select your next victim"
               options={battleBots}
               isSearchable
-              isClearable
               onChange={setBot2}
             />
           ) : (
@@ -73,26 +74,29 @@ function NewMatch() {
             )}
         </Col>
       </Row>
-      <Row>
-        <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Choose Your Bot</h1>
+      <Row2>
+        <Col size="md-5 sm-12">
+          <Jumbotron3>
+            <img src= {BlackDiamond} alt={bot1.label} height="150px" width="150px" style={{float:"left"}}></img>
             <p><strong>BattleBot: {bot1.label}</strong></p>
             <p><strong>Owner: {bot1.owner}</strong></p>
             <p><strong>{bot1.wins} - {bot1.losses}</strong></p>
             <p>{bot1.history}</p>
-          </Jumbotron>
+          </Jumbotron3>
         </Col>
-        <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Choose Your Bot</h1>
+        <Col2 size="md-1 sm-12">
+          <h1>Vs.</h1>
+        </Col2>
+        <Col size="md-5 sm-12">
+          <Jumbotron3>
+            <img src= {BlackDiamond} alt={bot2.label} height="150px" width="150px" style={{float:"left"}}></img>
             <p><strong>BattleBot: {bot2.label}</strong></p>
             <p><strong>Owner: {bot2.owner}</strong></p>
             <p><strong>{bot2.wins} - {bot2.losses}</strong></p>
             <p>{bot2.history}</p>
-          </Jumbotron>
+          </Jumbotron3>
         </Col>
-      </Row>
+      </Row2>
       <Row>
       <Link to={{pathname:"/fight", bot1:bot1, bot2:bot2}}><strong>Fight!</strong></Link>
       </Row>
