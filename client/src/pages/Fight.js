@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Col2, Row, Container } from "../components/Grid";
 
 let activeSocket = false
 var socket;
@@ -75,44 +75,32 @@ function Fight(props) {
         
         <Container>
             <Row>
-                <Col size="md-6">
+                <Col2 size="md-12">
                     <img onClick={toggleConnection} alt="" 
-                    src="https://raw.githubusercontent.com/chillbuilds/battlebot/master/public/images/icons/raspberry-pi.png"></img>
-                </Col>
-                <Col size="md-6">
-                    <input id="IPaddress" type="text"></input>
-                </Col>
+                    src="https://raw.githubusercontent.com/chillbuilds/battlebot/master/public/images/icons/raspberry-pi.png" height="200px" width="200px"></img><br></br>
+                    <input id="IPaddress" type="text" style={{ width: "220px", margin: "10px 0px 10px 0px" }} placeholder="Input BattleBot IP Address"></input>
+                </Col2>
             </Row>
             <Row>
-                <Col size="md-6">
-                    <h1>Fight!!!</h1>2
-                </Col>
+                <Col2 size="md-12">
+                    <button style={{ width: "50px", height:"50px", margin: "10px 0px 10px 0px" }}>↑</button>
+                </Col2>
             </Row>
             <Row>
-                <Col size="md-6">
-                    <button>↑</button>
-                </Col>
+                <Col2 size="md-12">
+                    <button style={{ width: "50px", height:"50px", margin: "0px 5px 0px 0px" }}>←</button>
+                    <button style={{ width: "50px", height:"50px", margin: "0px 0px 0px 5px" }}>→</button>
+                </Col2>
             </Row>
             <Row>
-                <Col size="md-6">
-                    <button>←</button>
-                    <button>→</button>
-                </Col>
+                <Col2 size="md-12">
+                    <button style={{ width: "50px", height:"50px", margin: "10px 0px 10px 0px" }}>↓</button>
+                </Col2>
             </Row>
             <Row>
-                <Col size="md-6">
-                    <button>↓</button>
-                </Col>
-            </Row>
-            <Row>
-                <Col size="md-6">
+                <Col2 size="md-12">
                     <button>Attack</button>
-                </Col>      
-            </Row>
-            <Row>
-                <Col size="md-6">
-                    <button>Connect</button>
-                </Col>      
+                </Col2>      
             </Row>
         </Container>
         
