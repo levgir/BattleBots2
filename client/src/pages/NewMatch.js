@@ -4,9 +4,6 @@ import Jumbotron3 from "../components/Jumbotron3";
 import API from "../utils/API";
 import { Col, Col2, Row, Row2, Container } from "../components/Grid";
 import Select from "react-select";
-import BlackDiamond from "../utils/photos/Black Diamond.jpg"
-import Crusher from "../utils/photos/Crusher.png"
-
 
 function NewMatch() {
   // Setting our component's initial state
@@ -78,7 +75,8 @@ function NewMatch() {
       <Row2>
         <Col size="md-5 sm-12">
           <Jumbotron3>
-            <img id="pic1" src={BlackDiamond} alt={bot1.label} height="200px" width="200px" style={{ float: "left" }}></img>
+            {/* <img src={`${process.env.PUBLIC_URL}/assets/images/${bot1.label}.jpg`} /> */}
+            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot1.label}.jpg`} alt={bot1.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot1.label}</strong></p>
             <p><strong>Owner: {bot1.owner}</strong></p>
             <p><strong>{bot1.wins} - {bot1.losses}</strong></p>
@@ -90,7 +88,7 @@ function NewMatch() {
         </Col2>
         <Col size="md-5 sm-12">
           <Jumbotron3>
-            <img id="pic1" src={Crusher} alt={bot2.label} height="200px" width="200px" style={{ float: "left" }}></img>
+            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot2.label}.jpg`} alt={bot2.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot2.label}</strong></p>
             <p><strong>Owner: {bot2.owner}</strong></p>
             <p><strong>{bot2.wins} - {bot2.losses}</strong></p>
