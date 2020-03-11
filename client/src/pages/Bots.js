@@ -23,7 +23,7 @@ function Bots() {
           </a>
         </Col>
         <Col size="md-6 sm-12">
-          <a href="/newBot">
+          <a href="/newmatch">
             <Jumbotron>
                 <h1>Git Ready to Rumble</h1>
             </Jumbotron>
