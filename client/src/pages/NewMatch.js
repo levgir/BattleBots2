@@ -34,7 +34,8 @@ function NewMatch() {
       history: bot.history,
       wins: bot.wins,
       losses: bot.losses,
-      owner: bot.owner
+      owner: bot.owner,
+      label2: bot.label
     }))
   }
 
@@ -76,7 +77,7 @@ function NewMatch() {
         <Col size="md-5 sm-12">
           <Jumbotron3>
             {/* <img src={`${process.env.PUBLIC_URL}/assets/images/${bot1.label}.jpg`} /> */}
-            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot1.label}.jpg`} alt={bot1.label} height="200px" width="200px" style={{ float: "left" }}></img>
+            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot1.label2}.jpg`} alt={bot1.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot1.label}</strong></p>
             <p><strong>Owner: {bot1.owner}</strong></p>
             <p><strong>{bot1.wins} - {bot1.losses}</strong></p>
@@ -88,7 +89,7 @@ function NewMatch() {
         </Col2>
         <Col size="md-5 sm-12">
           <Jumbotron3>
-            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot2.label}.jpg`} alt={bot2.label} height="200px" width="200px" style={{ float: "left" }}></img>
+            <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot2.label2}.jpg`} alt={bot2.label} height="200px" width="200px" style={{ float: "left" }}></img>
             <p><strong>BattleBot: {bot2.label}</strong></p>
             <p><strong>Owner: {bot2.owner}</strong></p>
             <p><strong>{bot2.wins} - {bot2.losses}</strong></p>

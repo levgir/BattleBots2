@@ -45,9 +45,8 @@ function toggleConnection() {
     socket.send('Browser connection closed')
     socket.close()
   }
-}
 
-document.addEventListener('keydown', function(event){
+  document.addEventListener('keydown', function(event){
     if(activeSocket === true){
         for(var i = 0; i < keyArr.length; i++){
           if(keyArr[i] === event.which && event.which !== lastKey){
@@ -59,15 +58,20 @@ document.addEventListener('keydown', function(event){
 });
 
 document.addEventListener('keyup', function(event) {
-  for(var i = 0; i < keyArr.length; i++){
-    if(keyArr[i] === event.which){
-      socket.send(`keyup @ ${event.which}`)
+  if(activeSocket === true) {
+    for(var i = 0; i < keyArr.length; i++){
+      if(keyArr[i] === event.which){
+        socket.send(`keyup @ ${event.which}`)
+      }
+    }
+    if(event.which === lastKey){
+      lastKey = undefined
     }
   }
-  if(event.which === lastKey){
-    lastKey = undefined
-  }
 })
+}
+
+
 
 function setIP () {
     ipAddress = document.getElementById("IPaddress").value
@@ -75,7 +79,6 @@ function setIP () {
 }
 
 function Fight(props) {
-    console.log(props.bot1, props.bot2)
     return (
         
         <Container>
