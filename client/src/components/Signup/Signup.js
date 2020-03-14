@@ -16,19 +16,19 @@ class Signup extends Component {
 
     componentDidMount() {
         console.log(this.props);
-        this.validatePassword();
+        // this.validatePassword();
     }
 
     componentDidUpdate() {
 
         // functions to check the input fields, and update the state if they are valid
-        this.confirmPassword();
-        this.validatePassword();
-        this.passwordMessage();
-        this.validateEmail();
-        this.validUsername();
-        this.validFirstname();
-        this.validLastname();
+        // this.confirmPassword();
+        // this.validatePassword();
+        // this.passwordMessage();
+        // this.validateEmail();
+        // // this.validUsername();
+        // this.validFirstname();
+        // this.validLastname();
     }
 
     handleInputChange = event => {

@@ -22,11 +22,23 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bootstrap": "^4.4.1",
+    "colors": "^1.4.0",
+    "connect-flash": "^0.1.1",
     "emotion": "^10.0.27",
     "express": "^4.16.3",
+    "express-session": "^1.17.0",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
+    "morgan": "^1.9.1",
     "multer": "^1.4.2",
-    "react-select": "^3.0.8"
+    "node-sass": "^4.13.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-select": "^3.0.8",
+    "reactstrap": "^8.4.1"
   }
 }

@@ -1,3 +1,4 @@
 module.exports = {
-  Bot: require("./bot")
+  Bot: require("./bot"),
+  User: require("./Users")
 };

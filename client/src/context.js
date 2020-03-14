@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "./utils/API";
+import API from "../src/utils/API";
 
 const UserContext = React.createContext();
 
