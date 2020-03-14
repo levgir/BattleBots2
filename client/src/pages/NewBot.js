@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row, Row3, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
 import { Input, TextArea, FormBtn } from "../components/Form";
@@ -38,7 +37,8 @@ function Bots() {
         owner: formObject.owner,
         history: formObject.history,
         wins: formObject.wins,
-        losses: formObject.losses
+        losses: formObject.losses,
+        label: formObject.name.replace(/ /g,'')
       })
         .catch(err => console.log(err));
     }
@@ -93,18 +93,28 @@ function Bots() {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>View BattleBots</h1>
+              <h1>Check out these BattleBots!</h1>
             </Jumbotron>
             {bots.length ? (
               <List>
                 {bots.map(bot => (
                   <ListItem key={bot._id}>
-                    <Link to={"/bots/" + bot._id}>
-                      <strong>
-                        {bot.name}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteBot(bot._id)} />
+                    <Container fluid>
+                      <Row3>
+                        <Col size="3">
+                        <img id="pic1" src={`${process.env.PUBLIC_URL}/photos/${bot.label}.jpg`} alt={bot.label} height="100px" width="100px"></img>
+                        </Col>
+                        <Col size="4">
+                          <strong>Name: </strong>{bot.name} <br></br>
+                          <strong>Creator: </strong>{bot.owner} <br></br>
+                          <strong>Record: </strong>{bot.wins}-{bot.losses}
+                        </Col>
+                        <Col size="4">
+                          {bot.history}                
+                        </Col>
+                        <Col size="1"><DeleteBtn onClick={() => deleteBot(bot._id)} /></Col>
+                        </Row3>
+                      </Container>
                   </ListItem>
                 ))}
               </List>
